@@ -1,0 +1,37 @@
+img{
+float: left;
+padding-right: 50px;
+padding-left: 30px;
+}
+ul {
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+    background-color: #ef3a42  ;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+   /* efecto al pasar el ratón por los items del menu */
+ul li a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding: 27px 20px;
+}
+ul li{
+    position:relative;
+    float:left;
+    margin:0;
+    padding:0;
+}
+#active {
+    background-color: rgb(87, 86, 86);
+}
+ul li a:hover {
+    background:rgb(39, 39, 39);
+}
