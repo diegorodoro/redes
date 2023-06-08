@@ -1,30 +1,14 @@
-img{
-float: left;
-padding-right: 50px;
-padding-left: 30px;
-}
-ul {
-    list-style-type:none;
-    margin:0px;
-    padding:0px;
-    background-color: #ef3a42  ;
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: #EE3A43;
 }
-ul li a{
-    display:block;
-    color:#fff;
-    text-decoration:none;
-    font-size:15px;
-    font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    padding: 32px 20px;
+
+.nav-link{
+    color:azure;
 }
-#active {
-    background-color: rgb(87, 86, 86);
-}
-ul li a:hover {
-    background:rgb(39, 39, 39);
-}
+
+body {
+    padding-top: 70px; /* Añade un espacio en la parte superior del contenido para evitar que se superponga con la barra de navegación */
+  }
