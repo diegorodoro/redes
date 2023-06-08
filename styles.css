@@ -12,7 +12,6 @@ ul {
     top: 0;
     width: 100%;
 }
-   /* efecto al pasar el ratón por los items del menu */
 ul li a{
     display:block;
     color:#fff;
@@ -21,13 +20,7 @@ ul li a{
     font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform:uppercase;
     letter-spacing:1px;
-    padding: 27px 20px;
-}
-ul li{
-    position:relative;
-    float:left;
-    margin:0;
-    padding:0;
+    padding: 32px 20px;
 }
 #active {
     background-color: rgb(87, 86, 86);
