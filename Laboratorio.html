@@ -6,12 +6,26 @@
         crossorigin="anonymous">
         <link href="Lab.css" rel="stylesheet">
         <link href="navbar.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+          $('.card .btn-primary').click(function(event) {
+            event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+
+            var $additionalInfo = $(this).siblings('.additional-info');
+            $additionalInfo.slideToggle();
+          });
+        });
+        </script>
+
     </header>
     <body>
         
+
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          
+
           <a class="navbar-brand" href="#">
             <img src="logo_frojo_tblanco.png" alt="Bootstrap" width="110px" height="50px">
           </a>
@@ -36,16 +50,87 @@
       </nav>
 
 
-          <div class ="contenedor">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+      <div class ="contenedor">
+
+          <div class="card" style="width: 18rem;">
+            <img src="logo_frojo_tblanco.png" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 1</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="logo_frojo_tblanco.png" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 2</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 3</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 4</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 5</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 6</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">Práctica 7</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
+
+
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Práctica 8</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Mostrar más</a>
+              <div class="additional-info">
+                <!-- Contenido adicional -->
+                <p>Contenido adicional de la tarjeta...</p>
+              </div>
             </div>
           </div>
+
+      </div>
 
 
 

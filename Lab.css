@@ -2,8 +2,22 @@ body{
     background-color: aqua;
 }
 
+
+.card{
+    margin: 10px;
+}
+
+
+.additional-info {
+    display: none; /* Oculta el contenido adicional por defecto */
+  }
+  
+
+
+
 .contenedor{
         height: 100%;
+        flex-wrap: wrap;
         display: flex;
         justify-content: center;
         align-items: center;
