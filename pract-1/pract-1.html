@@ -1,0 +1,169 @@
+<html>
+    <header>
+        <title>Laboratorio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+        crossorigin="anonymous">
+        <link href="../navbar.css" type="text/css"rel="stylesheet">
+        <style>
+          h1{
+            text-align: center;
+            color: aliceblue; 
+            padding: 2%;
+          }
+          h2{
+            color: aliceblue; 
+            padding-top: 2%;
+          }
+          h3{
+            text-align: left;
+            color: aliceblue; 
+            text-align: justify;
+          }
+        
+        </style>
+    </header>
+    <body style="background-color: black;">
+      <div>
+        <table width=80% align="center"height="40%">
+          <tr>
+            <td colspan="2">
+              <h1 >Práctica 1: “Protocolo de Comunicación – Contador de pulsos y contador de tiempo”</h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2 style="text-align: left;">1. Objetivo General</h2><br>
+              <h3>Conocer, identificar y comprobar el funcionamiento al desarrollar un protocolo de comunicación, 
+              en esta primera parte de un contador de pulsos y un contador de tiempo en un pulso.</h3>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>2. Objetivos específicos</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>Utilizando 1 Arduino, diseñar una función que permita enviar un número determinado de pulsos (Variación de 0 a 1) 
+                    a una frecuencia específica, la función debe tener la siguiente estructura void pulsos(int cantidad, int duración). 
+                    (Comprobar el correcto funcionamiento utilizando el osciloscopio).</h3>
+                </li>
+                <li>
+                  <h3>Utilizando un segundo Arduino, diseñar una función que permita contar el número de pulsos que ha recibido (Variación de 0 a 1) 
+                    y mostrarlos en el monitor serial.</h3>
+                </li>
+                <li>
+                  <h3>Utilizando ambos arduinos, conectar un pin de los Arduinos para comprobar el funcionamiento del sistema enviando un numero de pulsos 
+                    específicos a la velocidad de 1 pulso por segundo,10, 100 y 1000 pulsos por segundo.</h3>
+                </li>
+                <li>
+                  <h3>Utilizando ambos arduinos, conectar un pin de los Arduinos para comprobar el funcionamiento del sistema enviando un numero de pulsos 
+                    específicos a la velocidad de 1 pulso por segundo,10, 100 y 1000 pulsos por segundo.</h3>
+                </li>
+              </ul>
+
+              <h2>   Contador de duración de pulsos</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>Utilizando 1 Arduino, diseñar una función que permita enviar un pulso con un tiempo en High determinado (Comprobar el correcto funcionamiento 
+                    utilizando el osciloscopio)</h3>
+                </li>
+                <li>
+                  <h3>Utilizando un segundo Arduino, diseñar una función que permita contar el tiempo de la duración de un pulso que ha recibido del primer Arduino (Variación de 0 a 1) 
+                    y mostrarlos en el monitor serial.</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>3. Material</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>2 Arduino</h3>
+                </li>
+                <li>
+                  <h3>Protoboard</h3>
+                </li>
+                <li>
+                  <h3>Botónes</h3>
+                </li>
+                <li>
+                  <h3>LED’s</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;">
+                <img src="circuito-pract1.png">
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                  <video width="320" height="240" controls muted>
+                    <source src="mandar-recibir.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+
+          <tr > 
+            <td>
+              <div style="text-align: center;">
+                <h2 style="text-align: center;">Manda pulso</h2>
+                <iframe
+                src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=void%2520setup%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520setup%2520code%2520here%252C%2520to%2520run%2520once%253A%250A%2520%2520pinMode%288%252COUTPUT%29%253B%250A%2520%2520delay%288000%29%253B%250A%2520%2520pulso%281%252C333%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520main%2520code%2520here%252C%2520to%2520run%2520repeatedly%253A%250A%250A%257D%250A%250Avoid%2520pulso%28int%2520cant%252C%2520int%2520tiempo%29%257B%250A%2520%2520for%28int%2520i%253D0%253Bi%253Ccant%253Bi%252B%252B%29%257B%250A%2520%2520%2520%2520digitalWrite%288%252CHIGH%29%253B%250A%2520%2520%2520%2520delay%28tiempo%29%253B%250A%2520%2520%2520%2520digitalWrite%288%252CLOW%29%253B%250A%2520%2520%2520%2520delay%28tiempo%29%253B%250A%2520%2520%257D%250A%257D"
+                style="width: 426px; height: 537px; border:0; transform: scale(1); overflow:hidden; text-align:center;"
+                sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+            
+            <td>
+              <div style="text-align: center;">
+                <h2 style="text-align: center;">Recibe pulso</h2>
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=int%2520v%253B%250Aint%2520cont%253D0%253B%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520setup%2520code%2520here%252C%2520to%2520run%2520once%253A%250A%2520%2520pinMode%288%252CINPUT%29%253B%250A%2520%2520Serial.begin%289600%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520main%2520code%2520here%252C%2520to%2520run%2520repeatedly%253A%250A%2520%2520%250A%2520%2520v%253DdigitalRead%288%29%253B%250A%2520%2520while%28v%253D%253DHIGH%29%257B%250A%2520%2520%2520%2520v%253DdigitalRead%288%29%253B%250A%2520%2520%2520%2520if%28v%253D%253DLOW%29%257B%250A%2520%2520%2520%2520%2520%2520%2520cont%252B%252B%253B%250A%2520%2520%2520%2520%2520%2520%2520break%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%2520%2520%2520Serial.println%28cont%29%253B%2520%250A%2520%257D%250Adelay%28tiempo%29%253B%250A%2520%2520%2520%2520digitalWrite%288%252CLOW%29%253B%250A%2520%2520%2520%2520delay%28tiempo%29%253B%250A%2520%2520%257D%250A%257D"
+                  style="width: 426px; height: 559px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../logo_frojo_tblanco.png" alt="Bootstrap" width="110px" height="50px">
+          </a> 
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Redes.html">Redes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../Laboratorio.html">Laboratorio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Proyecto Final</a>
+              </li>             
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </body>
+</html>

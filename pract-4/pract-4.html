@@ -1,0 +1,274 @@
+<html>
+    <header>
+        <title>Laboratorio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+        crossorigin="anonymous">
+        <link href="../navbar.css" type="text/css"rel="stylesheet">
+        <style>
+          h1{
+            text-align: center;
+            color: aliceblue; 
+            padding: 2%;
+          }
+          h2{
+            color: aliceblue; 
+            padding-top: 2%;
+          }
+          h3{
+            text-align: left;
+            color: aliceblue; 
+            text-align: justify;
+          }
+        
+        </style>
+    </header>
+    <body style="background-color: black;">
+      <table width=80% align="center"height="40%">
+          <tr>
+            <td colspan="2">
+              <h1>Práctica 4: “Wifi ESP8266 Entradas y Salidas Digitales”</h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2 style="text-align: left;">1. Objetivo General</h2><br>
+              <h3>Conocer, identificar y comprobar el funcionamiento de las 
+                entradas y salidas digitales en el módulo NodeMCU ESP8266 o ESP32.</h3>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>2. Objetivos específicos</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>Utilizando la información e instrucciones de la presentación, 
+                    configurar el IDE de Arduino para poder programar el NodeMCU directamente desde el entorno de Arduino, instalando las herramientas necesarias.</h3>
+                </li>
+                <li>
+                  <h3>Revisar el pinout y los GPIO disponibles para el uso del NodeMCU seleccionado.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un programa de encendido de un LED mediante programación.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un programa de apagado de un LED mediante programación.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un programa de encendido y apagado de un LED mediante retardos.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un sistema de encendido y apagado de un LED mediante el uso de botones.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un sistema de encendido y apagado de un LED mediante el uso de dos botones y una condicional OR.</h3>
+                </li>
+                <li>
+                  <h3>Desarrollar un sistema de encendido y apagado de un LED mediante el uso de dos botones y una condicional AND.</h3>
+                </li>
+                <li>
+                  <h3>Utilizando el ejemplo de Thingspeak, desarrollar un sistema que mediante un botón conectado al NodeMCU enviemos un 1 
+                    al apretar el botón y un 0 al soltarlo. (Ejemplo Thingspeak, prueba el tablero de ejemplo que se muestra en la presentación, 
+                    crea tu propio tablero de Thingspeak y envía los datos como evidencia):</h3>
+                </li>
+                <li>
+                  <h3>Utilizando un dashboard de ejemplo de PHP, desarrollar un sistema que mediante 3 botones conectados al NodeMCU enviemos un 1 al apretar el botón y un 0 al soltarlo. (Ejemplo GET,
+                    primero prueba el envió de datos al dashboard público en ingeniería-iberopuebla.mx, posteriormente contrata tu propio servidor, implementa la página del dashboard en el servidor y 
+                    envía datos como evidencia, personaliza el dashboard con estilos propios)</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>3. Material</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>Node MCU ESP8266 o ESP32</h3>
+                </li>
+                <li>
+                  <h3>LED, resistencia de 220 Ohms</h3>
+                </li>
+                <li>
+                  <h3>4 Botones y 4 resistencias de 1Khom</h3>
+                </li>
+                <li>
+                  <h3>Protoboard y cables</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                <h2>Parpadeo</h2>
+                  <video width="320" height="240" controls muted>
+                    <source src="parpadear.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;"">
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520int%2520buttonPin%2520%253D%25204%253B%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520pushbutton%2520pin%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%2520%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520LED%2520pin%250Aint%2520buttonState%2520%253D%25200%253B%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520Serial.begin%28115200%29%253B%2520%2520%250A%2520%2520%252F%252F%2520initialize%2520the%2520pushbutton%2520pin%2520as%2520an%2520input%250A%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520%252F%252F%2520initialize%2520the%2520LED%2520pin%2520as%2520an%2520output%250A%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520read%2520the%2520state%2520of%2520the%2520pushbutton%2520value%250A%2520%2520buttonState%2520%253D%2520digitalRead%28buttonPin%29%253B%250A%2520%2520Serial.println%28buttonState%29%253B%250A%2520%2520%252F%252F%2520check%2520if%2520the%2520pushbutton%2520is%2520pressed.%250A%2520%2520%252F%252F%2520if%2520it%2520is%252C%2520the%2520buttonState%2520is%2520HIGH%250A%2520%2520if%28buttonState%2520%253D%253D%2520HIGH%29%2520%257B%250A%2520%2520%2520%2520while%281%253C2%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520HIGH%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520delay%282000%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520LOW%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520delay%282000%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%2520else%2520%257B%250A%2520%2520%2520%2520%252F%252F%2520turn%2520LED%2520off%250A%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520LOW%29%253B%250A%2520%2520%257D%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520value%2520%253D%2520analogRead%28pinPot%29%253B%250A%2520%2520value%2520%253D%2520map%28value%252C%25200%252C%25201023%252C%25206%252C%2520255%29%253B%250A%2520%2520%250A%2520%2520send_data%28value%252C%252010%29%253B%250A%2520%2520delay%281%29%253B%250A%257D%250A"
+                  style="width: 500px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                <h2>Or</h2>
+                  <video width="320" height="240" controls muted>
+                    <source src="or.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;"">
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520int%2520buttonPin%2520%253D%25204%253B%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520pushbutton%2520pin%250Aconst%2520int%2520buttonPin2%2520%253D%252019%253B%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%2520%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520LED%2520pin%250Abool%2520button1%253B%250Abool%2520button2%253B%250A%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520Serial.begin%28115200%29%253B%2520%2520%250A%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28buttonPin2%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520main%2520code%2520here%252C%2520to%2520run%2520repeatedly%253A%250A%2520%2520button1%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520button2%253DdigitalRead%28buttonPin2%29%253B%250A%250A%2520%2520if%28button1%2520%257C%257C%2520button2%29%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252CHIGH%29%253B%250A%2520%2520%257D%250A%2520%2520else%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252CLOW%29%253B%250A%2520%2520%257D%250A%257D"
+                  style="width: 535px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                <h2>Encender y apagar</h2>
+                  <video width="320" height="240" controls muted>
+                    <source src="encender-apagar.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;"">
+                <iframe
+                src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520int%2520buttonPin%2520%253D%25204%253B%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520pushbutton%2520pin%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%2520%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520LED%2520pin%250Aint%2520ledState%253DLOW%253B%250Aint%2520buttonState%253DHIGH%253B%250Aint%2520currentButton%253B%250Aunsigned%2520long%2520previousTime%253D0%253B%250Aconst%2520unsigned%2520long%2520debounceTime%253D50%253B%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520Serial.begin%28115200%29%253B%2520%2520%250A%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520main%2520code%2520here%252C%2520to%2520run%2520repeatedly%253A%250A%2520%2520currentButton%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520if%28currentButton%2520%21%253D%2520buttonState%2520%2526%2526%2520millis%28%29-previousTime%253EdebounceTime%29%257B%250A%2520%2520%2520%2520previousTime%253Dmillis%28%29%253B%250A%2520%2520%2520%2520if%28currentButton%253D%253DLOW%29%257B%250A%2520%2520%2520%2520%2520%2520ledState%253D%21ledState%253B%2520%2520%250A%2520%2520%2520%2520%257D%2520%2520%250A%2520%2520%257D%250A%2520%2520buttonState%253DcurrentButton%253B%250A%2520%2520digitalWrite%28ledPin%252CledState%29%253B%250A%257D"
+                style="width: 637px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+                sandbox="allow-scripts allow-same-origin">
+              </iframe>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                <h2>Apagar</h2>
+                  <video width="320" height="240" controls muted>
+                    <source src="encender-apagar.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;"">
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=648&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520int%2520buttonPin%2520%253D%25204%253B%2520%2520%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%2520%2520%250Aint%2520buttonState%2520%253D%25200%253B%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520Serial.begin%28115200%29%253B%2520%2520%250A%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520buttonState%2520%253D%2520digitalRead%28buttonPin%29%253B%250A%2520%2520Serial.println%28buttonState%29%253B%250A%250A%2520%2520if%2520%28buttonState%2520%253D%253D%2520HIGH%29%2520%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520LOW%29%253B%250A%2520%2520%257D%2520else%2520%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520HIGH%29%253B%250A%2520%2520%257D%250A%257D%250A"
+                  style="width: 648px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                <h2>AND</h2>
+                  <video width="320" height="240" controls muted>
+                    <source src="and.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center;"">
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=648&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520int%2520buttonPin%2520%253D%25204%253B%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520pushbutton%2520pin%250Aconst%2520int%2520buttonPin2%2520%253D%252019%253B%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%2520%2520%2520%252F%252F%2520the%2520number%2520of%2520the%2520LED%2520pin%250Abool%2520button1%253B%250Abool%2520button2%253B%250A%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520Serial.begin%28115200%29%253B%2520%2520%250A%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28buttonPin2%252C%2520INPUT%29%253B%250A%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520main%2520code%2520here%252C%2520to%2520run%2520repeatedly%253A%250A%2520%2520button1%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520button2%253DdigitalRead%28buttonPin2%29%253B%250A%250A%2520%2520if%28button1%2520%2526%2526%2520button2%29%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252CHIGH%29%253B%250A%2520%2520%257D%250A%2520%2520else%257B%250A%2520%2520%2520%2520digitalWrite%28ledPin%252CLOW%29%253B%250A%2520%2520%257D%250A%257D"
+                  style="width: 648px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+        </div>
+
+      <tr>
+        <td colspan="2" >
+          <div style="text-align: center; padding: 5%;">
+            <h2>Request y dashboard</h2>
+              <video width="320" height="240" controls muted>
+                <source src="request.mp4" type="video/mp4">
+              </video>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div style="text-align: center;">
+            <h2 style="text-align: center;">Request</h2>
+            <iframe
+            src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=648&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=%2523include%2520%253CWiFi.h%253E%250A%2523include%2520%253CHTTPClient.h%253E%250A%250AString%2520Web_page%253D%2522https%253A%252F%252Fapi.thingspeak.com%252Fupdate%253Fapi_key%253DMK3VVOESS12CSHG9%2526field1%253D%2522%253B%250AString%2520Sensor%253D%2522sensor_0001%2522%253B%250AString%2520message%253D%2522%2522%253B%250Aconst%2520int%2520buttonPin%2520%253D%25204%253B%2520%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%250A%250Aint%2520Button%253B%250Aint%2520currentButton%253B%250Aint%2520value%253D1000%253B%250A%250AHTTPClient%2520http%253B%250A%2520%2520%2520%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520setup%2520code%2520here%252C%2520to%2520run%2520once%253A%250A%2520%2520%2520%2520Serial.begin%28115200%29%253B%250A%2520%2520%2520%2520pinMode%28buttonPin%252C%2520INPUT%29%253B%250A%2520%2520%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%250A%2520%2520%2520%2520%252F%252FConect%2520to%2520wifi%2520network%250A%2520%2520%2520%2520WiFi.begin%28%2522iPhone%2520de%2520Diego%2522%252C%2520%2522Rodoro%2524%2525diego102%2526%2522%29%253B%2520%2520%252F%252FWifi_Network%252C%2520Wifi_Password%2520******CHANGE%250A%250A%2520%2520%2520%2520%252F%252FWait%2520until%2520connection%250A%2520%2520%2520%2520while%28%28WiFi.status%28%29%2520%21%253D%2520WL_CONNECTED%29%29%2520%257B%250A%2520%2520%2520%2520%2520%2520delay%28500%29%253B%250A%2520%2520%2520%2520%2520%2520Serial.print%28%2522.%2522%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2520Serial.println%28%2522Wifi%2520conected%2522%29%253B%250A%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%2520if%28%28WiFi.status%28%29%2520%2520%253D%253D%2520WL_CONNECTED%29%29%2520%257B%250A%2520%2520%2520%2520%2520%2520Button%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520%2520%2520%2520%2520if%28Button%253D%253D1%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520value%253D1%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520HIGH%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520mandar%281%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520currentButton%253DButton%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520while%28Button%253D%253DcurrentButton%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520Button%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520value%253D0%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520digitalWrite%28ledPin%252C%2520LOW%29%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520mandar%280%29%253B%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D%250Avoid%2520mandar%28int%2520value%29%257B%250A%2520%2520%2520%2520%2520%2520message%253DWeb_page%252BString%28value%29%253B%2520%252F%252F%2520Request%2520Message%2520Domain%252Fpage%252Frequest%250A%2520%2520%2520%2520%2520%2520Serial.println%28message%29%253B%250A%2520%2520%2520%2520%2520%2520http.begin%28message%29%253B%2520%252F%252FHTTP%250A%2520%2520%2520%2520%2520%2520%2520int%2520httpCode%2520%253D%2520http.GET%28%29%253B%250A%2520%2520%2520%2520%2520%2520Serial.printf%28%2522%255BHTTP%255D%2520GET...%2520code%253A%2520%2525d%255Cn%2522%252C%2520httpCode%29%253B%250A%2520%2520%2520%2520%2520%2520http.end%28%29%253B%2520%2520%250A%257D"
+            style="width: 500px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+            sandbox="allow-scripts allow-same-origin">
+            </iframe>
+          </div>
+        </td>
+        <td>
+          <div style="text-align: center;">
+            <h2 style="text-align: center;">Dashboard</h2>
+            <iframe
+              src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=648&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=%2523include%2520%253CWiFi.h%253E%250A%2523include%2520%253CHTTPClient.h%253E%250A%250AString%2520Web_page%253D%2522http%253A%252F%252Fingenieria-iberopuebla.mx%252Fiot%252Fdashboard-example3%252F%2522%253B%250AString%2520Sensor1%253D%2522sensor_0001%2522%253B%250AString%2520Sensor2%253D%2522sensor_0002%2522%253B%250AString%2520Sensor3%253D%2522sensor_0003%2522%253B%250A%250AString%2520message%253D%2522%2522%253B%250Aconst%2520int%2520buttonPin1%2520%253D%25204%253B%250Aconst%2520int%2520buttonPin2%2520%253D%252019%253B%2520%250Aconst%2520int%2520buttonPin3%2520%253D%252022%253B%2520%250Aconst%2520int%2520ledPin%2520%253D%2520%25205%253B%2520%250A%250Aint%2520Button1%253B%250Aint%2520Button2%253B%250Aint%2520Button3%253B%250A%250Aint%2520currentButton%253B%250A%250AHTTPClient%2520http%253B%250A%2520%2520%2520%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520%252F%252F%2520put%2520your%2520setup%2520code%2520here%252C%2520to%2520run%2520once%253A%250A%2520%2520%2520%2520Serial.begin%28115200%29%253B%250A%2520%2520%2520%2520pinMode%28buttonPin1%252C%2520INPUT%29%253B%250A%2520%2520%2520%2520pinMode%28ledPin%252C%2520OUTPUT%29%253B%250A%250A%2520%2520%2520%2520%252F%252FConect%2520to%2520wifi%2520network%250A%2520%2520%2520%2520WiFi.begin%28%2522iPhone%2520de%2520Diego%2522%252C%2520%2522Rodoro%2524%2525diego102%2526%2522%29%253B%2520%2520%252F%252FWifi_Network%252C%2520Wifi_Password%2520******CHANGE%250A%250A%2520%2520%2520%2520%252F%252FWait%2520until%2520connection%250A%2520%2520%2520%2520while%28%28WiFi.status%28%29%2520%21%253D%2520WL_CONNECTED%29%29%2520%257B%250A%2520%2520%2520%2520%2520%2520delay%28500%29%253B%250A%2520%2520%2520%2520%2520%2520Serial.print%28%2522.%2522%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2520Serial.println%28%2522Wifi%2520conected%2522%29%253B%250A%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520%2520if%28%28WiFi.status%28%29%2520%2520%253D%253D%2520WL_CONNECTED%29%29%2520%257B%250A%2520%2520%2520%2520%2520%2520Button1%253DdigitalRead%28buttonPin1%29%253B%250A%2520%2520%2520%2520%2520%2520Button2%253DdigitalRead%28buttonPin2%29%253B%250A%2520%2520%2520%2520%2520%2520Button3%253DdigitalRead%28buttonPin3%29%253B%250A%250A%2520%2520%2520%2520%2520%2520if%28Button1%253D%253D1%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520send%28Sensor1%252C%2520buttonPin1%29%253B%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520if%28Button2%253D%253D1%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520send%28Sensor2%252C%2520buttonPin2%29%253B%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520if%28Button3%253D%253D1%29%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520send%28Sensor3%252C%2520buttonPin3%29%253B%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D%250Avoid%2520send%28String%2520sensor%252C%2520int%2520buttonPin%29%257B%250A%2520%2520mandar%281%252C%2520sensor%29%253B%250A%2520%2520int%2520currentButton%253D1%253B%250A%2520%2520int%2520Button%253B%250A%2520%2520while%28Button%253D%253DcurrentButton%29%257B%250A%2520%2520%2520%2520Button%253DdigitalRead%28buttonPin%29%253B%250A%2520%2520%257D%250A%2520%2520mandar%280%252C%2520sensor%29%253B%250A%257D%250Avoid%2520mandar%28int%2520value%252CString%2520sensor%29%257B%250A%2520%2520%2520%2520%2520%2520message%253DWeb_page%252Bsensor%252B%2522%252F%253Fdata%253D%2522%252BString%28value%29%253B%2520%252F%252F%2520Request%2520Message%2520Domain%252Fpage%252Frequest%250A%2520%2520%2520%2520%2520%2520Serial.println%28message%29%253B%250A%2520%2520%2520%2520%2520%2520http.begin%28message%29%253B%250A%2520%2520%2520%2520%2520%2520int%2520httpCode%2520%253D%2520http.GET%28%29%253B%250A%2520%2520%2520%2520%2520%2520Serial.printf%28%2522%255BHTTP%255D%2520GET...%2520code%253A%2520%2525d%255Cn%2522%252C%2520httpCode%29%253B%250A%2520%2520%2520%2520%2520%2520http.end%28%29%253B%2520%2520%250A%257D"
+              style="width: 648px; height: 500px; border:0; transform: scale(1); overflow:hidden;"
+              sandbox="allow-scripts allow-same-origin">
+            </iframe>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../logo_frojo_tblanco.png" alt="Bootstrap" width="110px" height="50px">
+          </a> 
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Redes.html">Redes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../Laboratorio.html">Laboratorio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Proyecto Final</a>
+              </li>             
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </body>
+</html>

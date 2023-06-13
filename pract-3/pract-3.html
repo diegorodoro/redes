@@ -1,0 +1,162 @@
+<html>
+    <header>
+        <title>Laboratorio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+        crossorigin="anonymous">
+        <link href="../navbar.css" type="text/css"rel="stylesheet">
+        <style>
+          h1{
+            text-align: center;
+            color: aliceblue; 
+            padding: 2%;
+          }
+          h2{
+            color: aliceblue; 
+            padding-top: 2%;
+          }
+          h3{
+            text-align: left;
+            color: aliceblue; 
+            text-align: justify;
+          }
+        
+        </style>
+    </header>
+    <body style="background-color: black;">
+      <div>
+        <table width=80% align="center"height="40%">
+          <tr>
+            <td colspan="2">
+              <h1>Práctica 3: “Protocolo de Comunicación Asíncrono”</h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2 style="text-align: left;">1. Objetivo General</h2><br>
+              <h3>Conocer, identificar y comprobar el funcionamiento al desarrollar un protocolo de comunicación 
+                asíncrono.</h3>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>2. Objetivos específicos</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>Utilizando 1 Arduino, diseñar un sistema que permita convertir el valor analógico de un potenciómetro en un arreglo 
+                    de variables que representen el numero en binario de 8 bits, y los deposite en un arreglo [ ], Finalmente elaborar 
+                    un código de programación que permita enviar los bits del arreglo en orden y en serie siguiendo las siguientes 
+                    características:</h3>
+                    <ul type="circle" style="padding-bottom: 2%;padding-left: 6%;">
+                      <li><h4>Iniciar el envió de los datos siempre con una señal HIGH
+                        (En total se enviarán 9 datos, el primer bit en HIGH y posteriormente los 8 bits de información).</h4></li>
+                      <li><h4>Enviar los datos con una duración del pulso predeterminada, ejemplo 1000 ms.</h4></li>
+                      <li><h4>Enviar siempre la misma cantidad de bits.</h4></li>
+                    </ul>
+                </li>
+                <li>
+                  <h3>Utilizando un segundo Arduino, diseñar una función que permita adquirir el valor en bits de la señal de comunicación del Arduino 
+                    anterior, la procese y la convierte en un dato decimal que finalmente enviara al monitor serial</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <h2>3. Material</h2><br>
+              <ul style="color: white;">
+                <li>
+                  <h3>2 Arduino</h3>
+                </li>
+                <li>
+                  <h3>Protoboard</h3>
+                </li>
+                <li>
+                  <h3>Botónes</h3>
+                </li>
+                <li>
+                  <h3>LED’s</h3>
+                </li>
+                <li>
+                  <h3>Potenciometro</h3>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div style="text-align: center;">
+                <img src="diagrama.png" width="80%">
+              </div>
+            </td>
+            <td>
+              <div style="text-align: center;">
+                <img src="circuito-pract3.png" width="80%">
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <div style="text-align: center; padding: 5%;">
+                  <video width="320" height="240" controls muted>
+                    <source src="analogo-decimal.mp4" type="video/mp4">
+                  </video>
+              </div>
+            </td>
+          </tr>
+
+          <tr>             
+            <td>
+              <div style="text-align: center;">
+                <h2 style="text-align: center;">Recibe señal análogo y envia a digital</h2>
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=uint8_t%2520led%2520%253D%25208%253B%250Auint8_t%2520pinPot%2520%253D%2520A5%253B%250Aint%2520value%2520%253D%25200%253B%250A%250Avoid%2520pulso%28int%2520tiempo%29%257B%250A%2520%2520digitalWrite%288%252C%2520HIGH%29%253B%250A%2520%2520delay%2520%28tiempo%29%253B%250A%2520%2520digitalWrite%288%252C%2520LOW%29%253B%250A%2520%2520delay%281%29%253B%250A%257D%250A%250Avoid%2520send_data%28uint8_t%2520value%252C%2520int%2520frecuencia%29%257B%250A%2520%2520pulso%281000%29%253B%250A%2520%2520%250A%2520%2520for%28int%2520i%253D%25200%253B%2520i%253C%25208%253B%2520i%252B%252B%29%257B%250A%2520%2520%2520%2520if%2520%28value%2520%2526%2520%281%2520%253C%253C%2520i%29%29%257B%250A%2520%2520%2520%2520%2520%2520digitalWrite%288%252C%2520HIGH%29%253B%250A%2520%2520%257D%250Aelse%257B%250A%2520%2520digitalWrite%288%252C%2520LOW%29%253B%250A%2520%2520%2520%257D%250A%2520%2520delay%281000%2520%252F%2520frecuencia%29%253B%250A%257D%250A%257D%250A%250Avoid%2520setup%28%29%2520%257B%250A%2520%2520pinMode%2520%28led%252C%2520OUTPUT%29%253B%250A%2520%2520%250A%2520%2520Serial.begin%289600%29%253B%250A%2520%2520Serial.println%28%2522Begining...%2522%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%2520%257B%250A%2520%2520value%2520%253D%2520analogRead%28pinPot%29%253B%250A%2520%2520value%2520%253D%2520map%28value%252C%25200%252C%25201023%252C%25206%252C%2520255%29%253B%250A%2520%2520%250A%2520%2520send_data%28value%252C%252010%29%253B%250A%2520%2520delay%281%29%253B%250A%257D%250A"
+                  style="width: 409px; height: 801px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+
+            <td>
+              <div style="text-align: center;">
+                <h2 style="text-align: center;">Recibe señal digital </h2>
+                <iframe
+                  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=seti&wt=sharp&l=text%2Fx-c%2B%2Bsrc&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=int%2520_time_count%2520%253D%25200%253B%250Aint%2520valor_enviado%2520%253D%25200%253B%250A%250Aint%2520time_count%28%29%257B%250Aint%2520count%2520%253D%25200%253B%250Aif%28digitalRead%288%29%2520%253D%253D%2520HIGH%29%257B%250A%2520%2520while%28digitalRead%288%29%2520%253D%253D%2520HIGH%29%257B%250A%2520%2520%2520count%252B%252B%253B%250A%2520%2520%2520delay%281%29%253B%250A%2520%2520%257D%250A%2520%2520count%2520%253D%2520count%2520%252B%2520count%2520*%25200.01%253B%250A%2520%2520%257D%250A%2520%2520return%2520count%253B%250A%257D%250A%250Avoid%2520recepcion_decimal%28int%2520frecuencia%29%257B%250A%2520%2520for%2520%28int%2520i%253D%25200%253B%2520i%253C%25208%253B%2520i%252B%252B%29%257B%250A%2520%2520%2520%2520if%2520%28digitalRead%288%29%29%257B%250A%2520%2520%2520%2520%2520%2520valor_enviado%2520%257C%253D%2520%281%2520%253C%253C%2520i%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520else%257B%250A%2520%2520%2520%2520%2520%2520valor_enviado%2520%2526%253D%25200xFF%2520%255E%2520%281%253C%253Ci%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520delay%281000%2520%252F%2520frecuencia%29%253B%250A%2520%2520%257D%250A%257D%250A%250Avoid%2520setup%28%29%257B%250A%2520%2520pinMode%288%252C%2520INPUT%29%253B%250A%250A%2520%2520Serial%2520.begin%289600%29%253B%250A%2520%2520Serial.println%28%2522Begining...%2522%29%253B%250A%257D%250A%250Avoid%2520loop%28%29%257B%250A%2520%2520if%2520%28digitalRead%288%29%2520%253D%253D%2520HIGH%29%257B%250A%2520%2520%250A%2520%2520%2520%2520_time_count%2520%253D%2520time_count%28%29%253B%250A%2520%2520%250A%2520%2520%2520%2520if%2520%28_time_count%2520%253E%253D%2520800%2520%2526%2526%2520_time_count%2520%253C%253D%25201100%29%257B%250A%2520%2520%2520%2520%2520%2520recepcion_decimal%2810%29%253B%250A%2520%2520%2520%2520%2520%2520Serial.println%28valor_enviado%29%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D"
+                  style="width: 451px; height: 801px; border:0; transform: scale(1); overflow:hidden;"
+                  sandbox="allow-scripts allow-same-origin">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../logo_frojo_tblanco.png" alt="Bootstrap" width="110px" height="50px">
+          </a> 
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Redes.html">Redes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../Laboratorio.html">Laboratorio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Proyecto Final</a>
+              </li>             
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </body>
+</html>
