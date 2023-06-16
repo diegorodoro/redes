@@ -44,17 +44,31 @@
 
 .Tcp{
     font-family: Arial, sans-serif;
-    margin-top: 440px;
-    margin-left: 15px;
+    margin-top: 460px;
+    margin-right: 30px; 
     color:#531661;
     text-align: justify;
+    
+    
 }
 
 .content-tcp{
-    margin-top:30px;
-    margin-right: calc(40% - 30px);
+    margin-top:20px; 
     color:aliceblue;
     font-size: 17px;
+    margin-left: calc(50% - 0px);
+    float:right;
     
+    
+    
+}
+
+.my-custom-accordion2{
+    
+
+    margin-right: calc(120% - 0px);
+    margin-left: calc(-96%);
+    margin-top: 4px;
+    /* margin-left: 15px; */
     
 }
