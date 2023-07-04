@@ -1,6 +1,6 @@
 .navbar {
-    position: fixed;
-    top: 0;
+   
+    margin-top: 0%;
     width: 100%;
     background-color: #EE3A43;
 }
@@ -10,5 +10,5 @@
 }
 
 body {
-    padding-top: 70px; /* Añade un espacio en la parte superior del contenido para evitar que se superponga con la barra de navegación */
+    padding-top: 0px; /* Añade un espacio en la parte superior del contenido para evitar que se superponga con la barra de navegación */
   }
