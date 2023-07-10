@@ -9,6 +9,12 @@
     color:azure;
 }
 
+.columnas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
 body {
     padding-top: 0px; /* Añade un espacio en la parte superior del contenido para evitar que se superponga con la barra de navegación */
   }
