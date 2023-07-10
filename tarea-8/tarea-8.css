@@ -1,0 +1,27 @@
+body{
+    background-color: #ac917f;
+}
+h1{
+    padding: 1%;
+    text-align: center;
+    color: #f5efe7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3,h2{
+    color: #f5efe7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h4{
+    text-align: justify;
+    color: #f5efe7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-justify: auto;
+}
+
+.comparar td{
+    width: 33.33%;
+    padding: 10;
+
+}

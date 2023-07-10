@@ -1,0 +1,177 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="tarea-8.css" rel="stylesheet">
+        <style>
+            input{
+                display: block; margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body style="padding: 30;">
+        <h1>Tarea 8</h1>
+        <h2 style="text-align: center;">Javascript</h2>
+        <h3>¿Qué hace la etiqueta input de HTML y como se utilizan?</h3>
+        <h4>La etiqueta &lt;input&gt; en HTML se utiliza para crear un elemento de entrada en un formulario web. Sirve para permitir que los usuarios ingresen datos interactuando con el formulario, como texto, números, fechas, selecciones de opciones, casillas de verificación y botones de radio.</h4>
+        <h3>Desarrolla en tu pagina web un ejemplo de un formulario utilizando la etiqueta input.</h3>
+        <input type="text"  id="name" required minlength="4" maxlength="8" size="10">
+        <h3>Desarrolla en tu pagina web un muestrario de al menos 10 tipos de inputs diferentes.</h3>
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="text">Texto:</label>
+                    <input type="text" id="text" name="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="number">Número:</label>
+                    <input type="number" id="number" name="number">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" name="date">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="checkbox">Casilla de verificación:</label>
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="file">Archivo:</label>
+                    <input type="file" id="file" name="file">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="color">Color:</label>
+                    <input type="color" id="color" name="color">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="range">Rango:</label>
+                    <input type="range" id="range" name="range">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="range">Enviar:</label>
+                    <input type="submit" value="Enviar">
+                </td>
+            </tr>           
+        </table>
+        <h3>¿Qué es lenguaje JavaScript?</h3>
+        <h4>JavaScript es un lenguaje de programación de alto nivel, 
+            interpretado y orientado a objetos que se utiliza principalmente en el desarrollo web.</h4>
+        <h3>¿Para qué sirve el leguaje JS?</h3>
+        <h4>JavaScript es un lenguaje de programación fundamental en el desarrollo web. Gracias a su capacidad para 
+            agregar interactividad y dinamismo a las páginas web, JavaScript permite crear experiencias de usuario más 
+            atractivas y funcionales. Se utiliza para validar formularios, manipular y actualizar el contenido de una 
+            página en tiempo real, realizar solicitudes a servidores para cargar datos adicionales, crear efectos 
+            visuales y animaciones, y desarrollar aplicaciones web completas tanto en el lado del cliente como en el 
+            lado del servidor. Además, JavaScript facilita la integración con APIs y servicios web, lo que permite la 
+            comunicación y el intercambio de datos con otros sistemas. En resumen, JavaScript es esencial para crear 
+            experiencias web interactivas, mejorar la usabilidad y proporcionar funcionalidades avanzadas en el mundo 
+            digital.
+        </h4>
+        <h3>¿A qué se refiere el DOM (Document Object model) en el desarrollo Web?</h3>
+        <h4>Document Object Model, abreviado como DOM, es una interfaz de programación estandarizada para la estructuración de documentos HTML y XML. 
+            Fue desarrollado y publicado por el Consorcio World Wide Web (W3C). El objetivo del Document Object Model es facilitar al máximo a los programadores 
+            el acceso a los componentes de un proyecto web para que puedan añadir, eliminar o editar contenido, atributos y estilos.
+        </h4>
+        <h3>¿Cuál es la diferencia entre los archivos HTML, CSS y JS?</h3>
+        <table class="comparar">
+            <tr>
+                <td>
+                    <h3 style="text-align: center;">HTML (HyperText Markup Language)</h3><br>
+                    <h4>HTML es el lenguaje de marcado utilizado para estructurar y organizar el contenido de una 
+                        página web. Define los elementos y su jerarquía, como encabezados, párrafos, imágenes, enlaces, 
+                        formularios, etc. HTML proporciona la estructura básica de una página web y se utiliza para describir la 
+                        semántica y la presentación del contenido</h4>
+                </td>
+                <td>
+                    <h3 style="text-align: center;">CSS (Cascading Style Sheets)</h3><br>
+                    <h4>CSS es un lenguaje de hojas de estilo utilizado para definir el aspecto visual y la presentación de una página web. 
+                        Se utiliza para establecer el color, la tipografía, el diseño, los tamaños, los márgenes y otros aspectos visuales de 
+                        los elementos HTML definidos en la página. CSS permite separar la estructura del contenido (HTML) de su apariencia y facilita 
+                        la creación de diseños consistentes y atractivos en múltiples páginas.</h4>
+                </td>
+                <td>
+                    <h3 style="text-align: center;">JS (JavaScript)</h3><br>
+                    <h4>JavaScript es un lenguaje de programación que se utiliza para agregar interactividad y funcionalidad a las páginas web. Permite crear comportamientos 
+                        dinámicos, responder a eventos del usuario, manipular y modificar el contenido del DOM, realizar validaciones de formularios, acceder a APIs y servicios web, 
+                        y mucho más. JavaScript se ejecuta en el lado del cliente, en el navegador web, y se utiliza para realizar acciones y cálculos en tiempo real.</h4>
+                </td>
+            </tr>
+        </table>
+        <h3>¿Para qué sirve la etiqueta &lt;script&gt;?</h3>
+        <h4>La etiqueta &lt;script&gt; se utiliza en HTML para insertar o incrustar código JavaScript en una página web. El código JavaScript contenido dentro de la etiqueta &lt;script&gt; 
+            se ejecuta cuando se carga o se procesa la página web por un navegador web.
+        </h4>
+        <h3>¿En qué consiste los 3 métodos para cambiar elementos tipo Tag Name, ID y Class Name con JS?</h3>
+        <table class="comparar">
+            <tr>
+                <td>
+                    <h3 style="text-align: center;">Tag Name</h3><br>
+                    <h4>Para cambiar elementos basados en su nombre de etiqueta, puedes utilizar el método getElementsByTagName(). Este método devuelve una lista de todos los elementos con el 
+                        nombre de etiqueta especificado. Puedes acceder a un elemento específico de la lista utilizando su índice y luego modificar sus propiedades o contenido.
+                    </h4>
+                </td>
+                <td>
+                    <h3 style="text-align: center;">ID</h3><br>
+                    <h4>Si deseas cambiar un elemento específico basado en su atributo de ID único, puedes utilizar el método getElementById(). Este método devuelve el elemento con el ID especificado. 
+                        Puedes acceder a sus propiedades y modificarlas según sea necesario. </h4>
+                </td>
+                <td>
+                    <h3 style="text-align: center;">Class Name</h3><br>
+                    <h4>Si deseas cambiar un conjunto de elementos que comparten un nombre de clase, puedes utilizar el método getElementsByClassName(). Este método devuelve una lista de todos los 
+                        elementos con la clase especificada. Puedes iterar sobre la lista y modificar las propiedades o contenido de los elementos según tus necesidades.</h4>
+                </td>
+            </tr>
+        </table>
+        <h3>Elabora en Replit un programa básico “Hola mundo” con JS, describe el funcionamiento y elementos utilizados.</h3>
+        <iframe width="100%" height="600px" src="https://replit.com/@DiegoRodrguez/tarea-8?v=1#script.js"></iframe>
+        <h3>¿Cuál es la sintaxis de la programación en JS?</h3>
+        <h4>JavaScript es capáz de distingur entre mayusculas y minusculas, por lo que al declarar dos variables con el mismo nombre pero uno con mayuscula, el lenguaje lo reconocera como dos diferentes.</h4>
+        <h4>En JavaScript, las instrucciones o declaraciones se separan con (;), pero no es necesario separar una instruccion con (;) si esta escrita en su propia linea</h4>
+        <h4>El texto de JavaScript se escanea de izquierda a derecha </h4>
+        <h4>La sintaxis es la misma que en C+</h4>
+        <h3>¿Como se declaran variables en JS?</h3>
+        <h4>Hay tres formas de declarar una variable, no es necesario mencionar el tipo de dato que es: 'var', 'let', y 'const'</h4>
+        <h4>'var': Las variables declaradas con var tienen un alcance de función o global. </h4>
+        <h4>'let': Una variable declarada con let estará disponible solo dentro del bloque en el que se declara.</h4>
+        <h4>'const': se utiliza para declarar variables constantes, cuyo valor inicial no puede ser reasignado. Las variables declaradas con const también tienen alcance de bloque.</h4>
+        <h3>¿Como se declaran funciones en JS?</h3>
+        <h4>Para declarar una funcion, se utiliza la palabra 'function', seguido del nombre que llevará la funcion, y un parentesis donde se indican los parametros que utilizara la funcion.</h4>
+        <h3>¿Como se llaman funciones en JS?</h3>
+        <h4>Simplemente se escribe el nombre de la funcion, y un parentesis que contendran los argumentos que se usaron.</h4>
+        <h3>¿Cómo declaras una función interna de un HTML con JS y como declaras un documento externo con JS?</h3>
+        <h4>Para declarar una funcion interna, se usa dentro del &lt;head&gt; la etiqueta &lt;script&gt;, dentro de esa etiqueta, se declara la funcion con la sintaxis de JavaScript.
+            posterior, en el body, cuando se utilize la etiqueta button, se utilizara el atributo onclick, donde se debera igualar al nombre de la funcion junto sus atributos.</h4>
+        <h4>Para declarar un documento externo, dentro de la etiqueta &lt;script&gt;, src se debe de igualar al nombre del archivo. De igual forma, dentro de la etiqueta de boton, con el atributo
+            onclick se menciona el nombre de la funcion. 
+        </h4>
+        <h3>¿Cuáles ciclos de programación están disponibles en JS?</h3>
+        <h4>For, while, y do While</h4>
+        <h3>¿Cuáles funciones de condicional estándisponibles en JS?</h3>
+        <h4>if, else if, switch, y operador ternario (?).</h4>
+    </body>
+</html>
